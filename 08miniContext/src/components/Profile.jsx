@@ -8,7 +8,7 @@ function Profile(){
     
     return (
         
-        <div>welcome:  {user}</div>
+        <div>welcome:  {user.username}</div>
     )
 
 }

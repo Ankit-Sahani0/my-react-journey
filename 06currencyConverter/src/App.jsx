@@ -1,40 +1,41 @@
 import { useState } from 'react'
 import useCurrencyInfo from './hooks/useCurrencyInfo'
-import {InputBox} from './components'
+import { InputBox } from './components'
 
 
 
 function App() {
-  const [amount, setAmount] = useState(0)
-  const [from, setFrom] = useState("USD")
-  const [to, setTo] = useState("INR")
-  const [convertedAmout, setConvertedAmount] = useState(0)
+    const [amount, setAmount] = useState(0)
+    const [from, setFrom] = useState("USD")
+    const [to, setTo] = useState("INR")
+    const [convertedAmout, setConvertedAmount] = useState(0)
 
-  const rates = useCurrencyInfo(from)
+    const rates = useCurrencyInfo(from)
 
-  const options = [from, ...Object.keys(rates)];
-
-
+    const options = [from, ...Object.keys(rates)];
 
 
-  const swap =()=>{
-    setFrom(to)
-    setTo(from)
-    setConvertedAmount(amount)
-    setAmount(convertedAmout)
-  }
 
-  const convert = ()=>{
-    const rate = rates[to];
-    setConvertedAmount(amount*rate);
-  }
 
-  return (
-    <div className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
-    style={{
+    const swap = () => {
+        setFrom(to)
+        setTo(from)
+        setConvertedAmount(amount)
+        setAmount(convertedAmout)
+    }
+
+    const convert = () => {
+        const rate = rates[to];
+        setConvertedAmount(amount * rate);
+    }
+
+    return (
+        <div className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
+            style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1622662124723-5c60aafebd4f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGN1cnJlbmN5fGVufDB8fDB8fHww')`,
             }}
         >
+            
             <div className="w-full">
                 <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
                     <form
@@ -50,7 +51,7 @@ function App() {
                                 selectCurrency={from}
                                 currencyOptions={options}
                                 onCurrencyChange={(amount) => setFrom(amount)}
-                                
+
                                 onAmountChange={(amount) => setAmount(amount)}
                             />
                         </div>
@@ -80,8 +81,8 @@ function App() {
                 </div>
             </div>
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default App
