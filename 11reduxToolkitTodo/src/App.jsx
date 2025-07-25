@@ -1,5 +1,5 @@
 import AddTodo from './components/AddTodo'
-import Todos from './components/Todo'
+import Todo from './components/Todo'
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
           Todo List with Redux Toolkit
         </h1>
         <AddTodo />
-        <Todos />
+        <Todo />
       </div>
     </div>
   )
